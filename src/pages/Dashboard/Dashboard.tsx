@@ -1,7 +1,10 @@
 import * as React from 'react'
+import Layout from 'components/core/Layout'
 
 export const Dashboard = () => {
   return (
-    <h1>Welcome to dashboard!</h1>
+    <Layout>
+      <div>Welcome to dashboard</div>
+    </Layout>
   )
 }

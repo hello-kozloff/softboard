@@ -1,7 +1,10 @@
 import * as React from 'react'
+import Layout from 'components/core/Layout'
 
 export const SignUp = () => {
   return (
-    <div>Welcome to sign up page</div>
+    <Layout>
+      <h1>Welcome to sign up page</h1>
+    </Layout>
   )
 }
