@@ -1,5 +1,11 @@
 import * as React from 'react'
+import Styles from 'styles'
 
 export const App = () => {
-  return <h1>Hello world!</h1>
+  return (
+    <>
+      <Styles />
+      <h1>Welcome to App!</h1>
+    </>
+  )
 }
