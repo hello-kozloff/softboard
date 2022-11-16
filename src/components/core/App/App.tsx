@@ -1,11 +1,13 @@
 import * as React from 'react'
+import { RouterProvider } from 'react-router-dom'
 import Styles from 'styles'
+import Router from 'router'
 
 export const App = () => {
   return (
-    <>
+    <React.Fragment>
       <Styles />
-      <h1>Welcome to App!</h1>
-    </>
+      <RouterProvider router={Router} />
+    </React.Fragment>
   )
 }
