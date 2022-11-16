@@ -4,18 +4,20 @@ import * as paths from 'constants/router'
 export const routes = [
   {
     path: paths.DASHBOARD_PATH,
-    component: Dashboard,
+    element: Dashboard,
+    protected: true,
   },
   {
     path: paths.SETTINGS_PATH,
-    component: Settings,
+    element: Settings,
+    protected: true,
   },
   {
     path: paths.AUTH_SIGN_IN,
-    component: SignIn,
+    element: SignIn,
   },
   {
     path: paths.AUTH_SIGN_UP,
-    component: SignUp,
+    element: SignUp,
   },
 ]
