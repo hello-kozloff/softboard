@@ -7,6 +7,7 @@ export const router = createBrowserRouter(
   routes.map((route) => {
     const Page = route.element
     const RouteValidator = route.protected ? ProtectedRoute : React.Fragment
+
     return {
       path: route.path,
       element: (

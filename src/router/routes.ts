@@ -1,23 +1,27 @@
-import { Dashboard, Settings, SignIn, SignUp } from 'pages'
+import * as pages from 'pages'
 import * as paths from 'constants/router'
 
 export const routes = [
   {
     path: paths.DASHBOARD_PATH,
-    element: Dashboard,
+    element: pages.Dashboard,
     protected: true,
   },
   {
     path: paths.SETTINGS_PATH,
-    element: Settings,
+    element: pages.Settings,
     protected: true,
   },
   {
     path: paths.AUTH_SIGN_IN,
-    element: SignIn,
+    element: pages.SignIn,
   },
   {
     path: paths.AUTH_SIGN_UP,
-    element: SignUp,
+    element: pages.SignUp,
+  },
+  {
+    path: '*',
+    element: pages.Redirect,
   },
 ]
