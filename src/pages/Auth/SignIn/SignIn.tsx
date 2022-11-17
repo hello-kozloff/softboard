@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Layout from 'components/core/Layout'
+import Layout, { HeaderVariant } from 'components/core/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { UserAction } from 'store/slices/user'
 import { RootState } from 'store'
@@ -24,7 +24,7 @@ export const SignIn = () => {
   }, [user])
 
   return (
-    <Layout>
+    <Layout header={<Layout.Header variant={HeaderVariant.Transparent} />}>
       <h1>Welcome to SignIn</h1>
     </Layout>
   )
