@@ -6,7 +6,7 @@ export const Header = styled.header<Pick<HeaderProps, 'variant'>>`
   align-items: center;
 
   min-height: 60px;
-  padding: 16px 32px;
+  padding: 8px 32px;
   box-sizing: border-box;
 
   ${(props) => {
