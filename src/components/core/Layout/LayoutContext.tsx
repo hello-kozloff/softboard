@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { LayoutProps } from './types'
+import { ContextPayload } from './types'
 
-export const LayoutContext = React.createContext<LayoutProps | undefined>(
+export const LayoutContext = React.createContext<ContextPayload | undefined>(
   undefined,
 )
 

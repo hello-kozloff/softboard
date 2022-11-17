@@ -6,14 +6,19 @@ import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 
-export const Layout = (props: LayoutProps) => {
+const Layout = ({ header, footer, ...context }: LayoutProps) => {
   return (
-    <LayoutContext.Provider value={props}>
+    <LayoutContext.Provider value={context}>
       <Styled.Layout className="layout">
-        <Header />
+        {header || <Header />}
         <Main />
-        <Footer />
+        {footer || <Footer />}
       </Styled.Layout>
     </LayoutContext.Provider>
   )
 }
+
+Layout.Header = Header
+Layout.Footer = Footer
+
+export { Layout }
