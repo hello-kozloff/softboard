@@ -1,27 +1,45 @@
 import * as pages from 'pages'
-import * as paths from 'constants/router'
+import { CustomRoute, RoutePath } from 'types/router'
 
-export const routes = [
+export const routes: CustomRoute[] = [
   {
-    path: paths.DASHBOARD_PATH,
-    element: pages.Dashboard,
-    protected: true,
+    path: RoutePath.DASHBOARD_PATH,
+    page: pages.Dashboard,
+    extra: {
+      guard: {
+        auth: true,
+      },
+    },
   },
   {
-    path: paths.SETTINGS_PATH,
-    element: pages.Settings,
-    protected: true,
+    path: RoutePath.SETTINGS_PATH,
+    page: pages.Settings,
+    extra: {
+      guard: {
+        auth: true,
+      },
+    },
   },
   {
-    path: paths.AUTH_SIGN_IN,
-    element: pages.SignIn,
+    path: RoutePath.AUTH_SIGN_IN,
+    page: pages.SignIn,
+    extra: {
+      guard: {
+        auth: false,
+      },
+    },
   },
   {
-    path: paths.AUTH_SIGN_UP,
-    element: pages.SignUp,
+    path: RoutePath.AUTH_SIGN_UP,
+    page: pages.SignUp,
+    extra: {
+      guard: {
+        auth: false,
+      },
+    },
   },
   {
-    path: '*',
-    element: pages.Redirect,
+    path: RoutePath.NOT_FOUND,
+    page: pages.Redirect,
   },
 ]
