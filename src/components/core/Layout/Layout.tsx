@@ -9,7 +9,7 @@ import Footer from './Footer'
 const Layout = ({ header, footer, ...context }: LayoutProps) => {
   return (
     <LayoutContext.Provider value={context}>
-      <Styled.Layout className="layout">
+      <Styled.Layout>
         {header || <Header />}
         <Main />
         {footer || <Footer />}
