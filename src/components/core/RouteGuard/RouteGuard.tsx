@@ -15,7 +15,7 @@ export const RouteGuard = ({ children, guard }: RouteGuardProps) => {
 
   if (guard?.auth === false) {
     if (isLogged) {
-      return <Navigate to={RoutePath.DASHBOARD_PATH} replace />
+      return <Navigate to={RoutePath.PROJECTS} replace />
     }
   }
 

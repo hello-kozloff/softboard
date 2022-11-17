@@ -1,10 +1,10 @@
 import * as React from 'react'
 import Layout from 'components/core/Layout'
 
-export const Dashboard = () => {
+export const Projects = () => {
   return (
     <Layout>
-      <div>Welcome to dashboard</div>
+      <div>Welcome to projects</div>
     </Layout>
   )
 }

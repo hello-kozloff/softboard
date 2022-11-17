@@ -3,8 +3,8 @@ import { CustomRoute, RoutePath } from 'types/router'
 
 export const routes: CustomRoute[] = [
   {
-    path: RoutePath.DASHBOARD_PATH,
-    page: pages.Dashboard,
+    path: RoutePath.PROJECTS,
+    page: pages.Projects,
     extra: {
       guard: {
         auth: true,
@@ -12,7 +12,7 @@ export const routes: CustomRoute[] = [
     },
   },
   {
-    path: RoutePath.SETTINGS_PATH,
+    path: RoutePath.SETTINGS,
     page: pages.Settings,
     extra: {
       guard: {

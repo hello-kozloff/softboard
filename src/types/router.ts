@@ -1,8 +1,8 @@
 export enum RoutePath {
-  DASHBOARD_PATH = '/',
+  PROJECTS = '/',
   AUTH_SIGN_IN = '/auth/sign-in',
   AUTH_SIGN_UP = '/auth/sign-up',
-  SETTINGS_PATH = '/settings',
+  SETTINGS = '/settings',
   NOT_FOUND = '*',
 }
 
