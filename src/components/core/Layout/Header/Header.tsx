@@ -3,7 +3,7 @@ import * as Styled from './styled'
 
 export const Header = () => {
   return (
-    <Styled.Header className="layout__header">
+    <Styled.Header>
       <span>Header content</span>
     </Styled.Header>
   )
