@@ -1,11 +1,9 @@
 import * as React from 'react'
 import * as Styled from './styled'
-import { useSelector } from 'react-redux'
-import { RootState } from 'store'
+import useUser from 'hooks/useUser'
 
 export const Profile = () => {
-  const user = useSelector((state: RootState) => state.user)
-  if (!user) return null
+  const user = useUser()
 
   return (
     <Styled.Profile>
