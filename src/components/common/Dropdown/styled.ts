@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 import { variables } from 'styles'
 
-export const Container = styled.div`
-  position: relative;
-`
-
 export const Target = styled.div`
   cursor: pointer;
 `
@@ -12,7 +8,6 @@ export const Target = styled.div`
 export const Dropdown = styled.div`
   min-width: 180px;
   display: inline-grid;
-  position: absolute;
 
   border-radius: 6px;
   border: 1px solid ${variables.gray6};

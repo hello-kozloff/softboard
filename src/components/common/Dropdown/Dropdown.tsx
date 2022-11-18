@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as Styled from './styled'
 import { useOnClickOutside, useToggle } from 'usehooks-ts'
+import { PositioningPortal } from '@codastic/react-positioning-portal'
 import type { DropdownProps } from './types'
 import Link from './Link'
 
@@ -14,9 +15,9 @@ export const Dropdown = ({
   useOnClickOutside(dropdownRef, toggleOpen)
 
   return (
-    <Styled.Container>
-      <Styled.Target onClick={toggleOpen}>{children}</Styled.Target>
-      {isOpen && (
+    <PositioningPortal
+      isOpen={isOpen}
+      portalContent={
         <Styled.Dropdown ref={dropdownRef}>
           {config.map((group, groupIndex) => (
             <Styled.Group key={groupIndex}>
@@ -26,7 +27,9 @@ export const Dropdown = ({
             </Styled.Group>
           ))}
         </Styled.Dropdown>
-      )}
-    </Styled.Container>
+      }
+    >
+      <Styled.Target onClick={toggleOpen}>{children}</Styled.Target>
+    </PositioningPortal>
   )
 }
