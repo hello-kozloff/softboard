@@ -21,7 +21,11 @@ export const Logo = styled(Link)`
     transition: 0.25s ease;
   }
 
-  &:hover span {
-    transform: rotateZ(45deg);
+  &:hover {
+    text-decoration: none;
+
+    span {
+      transform: rotateZ(45deg);
+    }
   }
 `
