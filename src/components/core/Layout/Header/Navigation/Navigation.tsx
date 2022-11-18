@@ -1,26 +1,12 @@
 import * as React from 'react'
 import * as Styled from './styled'
-import { RoutePath } from 'types/router'
 import useLogged from 'hooks/useLogged'
+import Config from './config'
 import Link from './Item'
-
-const config = {
-  public: [],
-  protected: [
-    {
-      to: RoutePath.PROJECTS,
-      children: <span>Projects</span>,
-    },
-    {
-      to: RoutePath.SETTINGS,
-      children: <span>Settings</span>,
-    },
-  ],
-}
 
 export const Navigation = () => {
   const isLogged = useLogged()
-  const links = !isLogged ? config.public : config.protected
+  const links = !isLogged ? Config.public : Config.protected
 
   return (
     <Styled.Navigation>
