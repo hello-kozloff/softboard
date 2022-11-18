@@ -1,10 +1,14 @@
 import * as React from 'react'
+import * as Styled from '../styled'
 import Layout, { HeaderVariant } from 'components/core/Layout'
+import { AuthForm } from 'components/forms/Auth'
 
 export const SignIn = () => {
   return (
     <Layout header={<Layout.Header variant={HeaderVariant.Transparent} />}>
-      <h1>Welcome to SignIn</h1>
+      <Styled.Container>
+        <AuthForm.SignIn />
+      </Styled.Container>
     </Layout>
   )
 }
