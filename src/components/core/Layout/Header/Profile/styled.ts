@@ -1,20 +1,16 @@
 import styled from 'styled-components'
-import { StyledDropdown } from 'components/common/Dropdown'
 
 export const Profile = styled.div`
   display: inline-grid;
   grid-auto-flow: column;
-  grid-column-gap: 12px;
+  grid-column-gap: 8px;
   align-items: center;
-
-  ${StyledDropdown} {
-    top: 100%;
-    right: 0;
-  }
+  user-select: none;
 `
 
 export const Username = styled.span`
   white-space: nowrap;
+  margin-right: 2px;
 `
 
 export const Avatar = styled.img`

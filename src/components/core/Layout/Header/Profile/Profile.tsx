@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as Styled from './styled'
 import useUser from 'hooks/useUser'
 import Dropdown, { DropdownProps } from 'components/common/Dropdown'
-import { FiChevronDown } from 'react-icons/fi'
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
 
 const dropdownConfig: DropdownProps['config'] = [
   [
@@ -43,14 +43,17 @@ const dropdownConfig: DropdownProps['config'] = [
 
 export const Profile = () => {
   const user = useUser()
+  const [isOpen, setOpen] = React.useState<boolean>(false)
+
+  console.log(isOpen)
 
   return (
-    <Styled.Profile>
-      <Styled.Username>{`${user.firstName} ${user.lastName[0]}.`}</Styled.Username>
-      <Styled.Avatar src={user.avatar || '/img/not-found-avatar.jpeg'} />
-      <Dropdown config={dropdownConfig}>
-        <FiChevronDown />
-      </Dropdown>
-    </Styled.Profile>
+    <Dropdown config={dropdownConfig} onChange={setOpen}>
+      <Styled.Profile>
+        <Styled.Username>{`${user.firstName} ${user.lastName[0]}.`}</Styled.Username>
+        <Styled.Avatar src={user.avatar || '/img/not-found-avatar.jpeg'} />
+        {!isOpen ? <FiChevronDown /> : <FiChevronUp />}
+      </Styled.Profile>
+    </Dropdown>
   )
 }

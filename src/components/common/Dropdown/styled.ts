@@ -1,11 +1,12 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import { variables } from 'styles'
 
 export const Target = styled.div`
   cursor: pointer;
 `
 
-export const Dropdown = styled.div`
+export const Dropdown = styled(motion.div)`
   min-width: 180px;
   display: inline-grid;
 
