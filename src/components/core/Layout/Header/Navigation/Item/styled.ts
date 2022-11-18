@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { variables } from 'styles'
 
 export const Link = styled(NavLink)<Record<string, unknown>>`
-  padding: 8px;
+  padding: 4px 16px;
 
   color: ${(props) => (props.active ? variables.gray0 : variables.gray2)};
   font-size: 16px;
@@ -11,5 +11,7 @@ export const Link = styled(NavLink)<Record<string, unknown>>`
   white-space: nowrap;
   text-decoration: none;
 
+  border-radius: 30px;
+  background-color: ${(props) => (props.active ? variables.gray6 : null)};
   transition: 0.25s ease;
 `

@@ -4,7 +4,7 @@ import { HeaderProps, HeaderVariant } from './types'
 
 export const Header = styled.header<Pick<HeaderProps, 'variant'>>`
   box-sizing: border-box;
-  
+
   padding: 8px 16px;
   min-height: 60px;
 
@@ -17,6 +17,7 @@ export const Header = styled.header<Pick<HeaderProps, 'variant'>>`
     }
   }};
 
+  &,
   ${Container} {
     display: flex;
     align-items: center;
