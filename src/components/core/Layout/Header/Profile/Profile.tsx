@@ -3,6 +3,7 @@ import * as Styled from './styled'
 import useUser from 'hooks/useUser'
 import Dropdown, { DropdownProps } from 'components/common/Dropdown'
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { RoutePath } from '../../../../../types/router'
 
 const dropdownConfig: DropdownProps['config'] = [
   [
@@ -35,7 +36,7 @@ const dropdownConfig: DropdownProps['config'] = [
   ],
   [
     {
-      to: '/auth/sign-out',
+      to: RoutePath.AUTH_LOGOUT,
       children: <span>Sign out</span>,
     },
   ],
@@ -44,8 +45,6 @@ const dropdownConfig: DropdownProps['config'] = [
 export const Profile = () => {
   const user = useUser()
   const [isOpen, setOpen] = React.useState<boolean>(false)
-
-  console.log(isOpen)
 
   return (
     <Dropdown config={dropdownConfig} onChange={setOpen}>

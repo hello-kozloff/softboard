@@ -39,6 +39,15 @@ export const routes: CustomRoute[] = [
     },
   },
   {
+    path: RoutePath.AUTH_LOGOUT,
+    page: pages.Logout,
+    extra: {
+      guard: {
+        auth: true,
+      },
+    },
+  },
+  {
     path: RoutePath.NOT_FOUND,
     page: pages.Redirect,
   },

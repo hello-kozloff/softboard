@@ -7,9 +7,10 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    signIn: (state, action: PayloadAction<UserState>) => (
-      state = action.payload
-    ),
+    store: (state, action: PayloadAction<UserState>) => {
+      return (state = action.payload)
+    },
+    reset: () => initialState,
   },
 })
 

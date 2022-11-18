@@ -11,7 +11,7 @@ export const SignUp = () => {
   React.useEffect(() => {
     if (!user) {
       dispatch(
-        UserAction.signIn({
+        UserAction.store({
           id: '0',
           email: 'hello.kozloff@gmail.com',
           emailVerifyAt: null,
