@@ -1,10 +1,11 @@
 import * as React from 'react'
 import * as Styled from './styled'
+import Container from 'components/common/Container'
 
 export const Footer = () => {
   return (
     <Styled.Footer>
-      <span>Footer content</span>
+      <Container>Footer content</Container>
     </Styled.Footer>
   )
 }
