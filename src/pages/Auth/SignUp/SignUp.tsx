@@ -17,7 +17,8 @@ export const SignUp = () => {
           emailVerifyAt: null,
           firstName: 'Stew',
           lastName: 'Jobs',
-          avatar: null,
+          avatar:
+            'https://cdn.profoto.com/cdn/053149e/contentassets/d39349344d004f9b8963df1551f24bf4/profoto-albert-watson-steve-jobs-pinned-image-original.jpg?width=1280&quality=75&format=jpg',
         }),
       )
     }
