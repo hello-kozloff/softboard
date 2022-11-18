@@ -11,5 +11,5 @@ export const Logout = () => {
     dispatch(UserAction.reset())
   }, [])
 
-  return <Navigate to={RoutePath.AUTH_SIGN_IN} />
+  return <Navigate to={RoutePath.HOME} />
 }
