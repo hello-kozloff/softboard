@@ -4,11 +4,11 @@ import { RoutePath } from 'types/router'
 const dropdownConfig: DropdownProps['config'] = [
   [
     {
-      to: '/profile/upgrade',
+      to: RoutePath.HOME,
       children: 'Upgrade',
     },
     {
-      to: '/profile/settings',
+      to: RoutePath.SETTINGS,
       children: 'Settings',
     },
   ],

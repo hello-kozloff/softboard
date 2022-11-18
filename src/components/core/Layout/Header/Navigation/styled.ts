@@ -5,5 +5,6 @@ export const Navigation = styled.div`
   display: grid;
   grid-auto-flow: column;
   justify-content: flex-start;
+  grid-column-gap: 4px;
   align-items: center;
 `

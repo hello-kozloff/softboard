@@ -5,7 +5,11 @@ import Container from 'components/common/Container'
 export const Footer = () => {
   return (
     <Styled.Footer>
-      <Container>Footer content</Container>
+      <Container>
+        <Styled.Copyright>
+          Softboard 2022. All rights reserved.
+        </Styled.Copyright>
+      </Container>
     </Styled.Footer>
   )
 }

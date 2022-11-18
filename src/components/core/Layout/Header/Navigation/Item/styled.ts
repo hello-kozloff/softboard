@@ -14,4 +14,12 @@ export const Link = styled(NavLink)<Record<string, unknown>>`
   border-radius: 30px;
   background-color: ${(props) => (props.active ? variables.gray6 : null)};
   transition: 0.25s ease;
+
+  &:hover {
+    background-color: ${(props) => (!props.active ? variables.gray7 : null)};
+  }
+
+  &:active {
+    background-color: ${variables.gray6};
+  }
 `

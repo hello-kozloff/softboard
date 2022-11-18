@@ -6,7 +6,7 @@ export const Connect = styled.div`
   padding: 8px 0;
   display: inline-grid;
   grid-auto-flow: column;
-  grid-column-gap: 12px;
+  grid-column-gap: 4px;
   align-items: center;
 `
 

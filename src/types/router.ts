@@ -1,14 +1,15 @@
 export enum RoutePath {
   HOME = '/',
-  DASHBOARD = '/dashboard',
-  PROJECTS = '/projects',
-  BOARDS = '/boards',
-  TASKS = '/tasks',
-  TEAMS = '/teams',
   AUTH_SIGN_IN = '/auth/sign-in',
   AUTH_SIGN_UP = '/auth/sign-up',
   AUTH_LOGOUT = '/auth/logout',
+  DASHBOARD = '/',
+  PROFILE = '/profile',
+  PROJECTS = '/projects',
   SETTINGS = '/settings',
+  TASKS = '/tasks',
+  BOARDS = '/boards',
+  TEAMS = '/teams',
   NOT_FOUND = '*',
 }
 
