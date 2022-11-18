@@ -16,6 +16,7 @@ export const SignUp = styled(Link)`
 
   &:hover {
     color: ${variables.gray2};
+    background: transparent;
   }
 `
 
@@ -26,5 +27,6 @@ export const SignIn = styled(SignUp)`
 
   &:hover {
     border-color: ${variables.gray2};
+    background: ${variables.gray8};
   }
 `
