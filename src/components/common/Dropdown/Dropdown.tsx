@@ -9,13 +9,15 @@ import Link from './Link'
 const dropdownAnimation: MotionProps = {
   initial: {
     opacity: 0,
+    transform: 'translateY(0)',
   },
   animate: {
     opacity: 1,
-    marginTop: 8,
+    transform: 'translateY(8px)',
   },
   exit: {
     opacity: 0,
+    transform: 'translateY(0)',
   },
   transition: {
     type: 'spring',

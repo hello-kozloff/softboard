@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 export const Profile = styled.div`
   display: inline-grid;
@@ -19,4 +20,8 @@ export const Avatar = styled.img`
 
   border-radius: 50%;
   object-fit: cover;
+`
+
+export const Chevron = styled(motion.div)`
+  display: inline-grid;
 `
