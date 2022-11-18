@@ -3,6 +3,15 @@ import { createGlobalStyle } from 'styled-components'
 import { variables } from './variables'
 
 export const styles = createGlobalStyle`
+  a {
+    color: ${variables.blue5};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   body {
     margin: 0;
     padding: 0;

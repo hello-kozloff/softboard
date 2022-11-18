@@ -17,6 +17,7 @@ export const SignUp = styled(Link)`
   &:hover {
     color: ${variables.gray2};
     background: transparent;
+    text-decoration: none;
   }
 `
 

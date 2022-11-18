@@ -45,3 +45,10 @@ export const Footer = styled.div`
   display: grid;
   grid-row-gap: 8px;
 `
+
+export const Message = styled.p`
+  margin-top: 8px;
+  color: ${variables.gray2};
+  font-size: 14px;
+  line-height: 22px;
+`
