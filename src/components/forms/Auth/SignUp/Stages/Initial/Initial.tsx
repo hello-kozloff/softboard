@@ -1,18 +1,17 @@
 import * as React from 'react'
-import * as Styled from '../styled'
-import phrases from './phrases'
+import { useForm } from 'react-hook-form'
 import Field from 'components/common/Field'
 import Input from 'components/common/Input'
+import { useSignUpContext } from 'components/forms/Auth/SignUp'
 import Button, { ButtonScale, ButtonVariant } from 'components/common/Button'
-import { useForm } from 'react-hook-form'
-import { UserAction } from 'store/slices/user'
-import { useDispatch } from 'react-redux'
+import { Styled } from 'components/forms/Auth'
 import { Values } from './types'
 
-const phrase = phrases[Math.floor(Math.random() * phrases.length)]
-
-export const SignIn = () => {
-  const dispatch = useDispatch()
+export const Initial = () => {
+  const {
+    stageState: [stage, setStage],
+    userState: [user, setUser],
+  } = useSignUpContext()
 
   const {
     register,
@@ -20,28 +19,22 @@ export const SignIn = () => {
     formState: { errors },
   } = useForm<Values>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: user?.email || '',
+      password: user?.email || '',
     },
   })
 
-  const onSubmit = (values: Values) =>
-    dispatch(
-      UserAction.store({
-        id: '1',
-        email: values.email,
-        emailVerifyAt: null,
-        firstName: 'Stew',
-        lastName: 'Jobs',
-        position: 'Frontend Developer',
-        avatar: null,
-      }),
-    )
+  const onSubmit = (values: Values) => {
+    setUser(values)
+    setStage(stage + 1)
+  }
 
   return (
     <Styled.Form onSubmit={handleSubmit(onSubmit)}>
-      <Styled.Title>Sign In</Styled.Title>
-      <Styled.Subtitle>{phrase}</Styled.Subtitle>
+      <Styled.Title>Sign Up</Styled.Title>
+      <Styled.Subtitle>
+        Create an account and get 1 free project for you and your team. 🔥
+      </Styled.Subtitle>
       <Styled.Content>
         <Styled.Row>
           <Field label="Email:" error={errors?.email}>
@@ -68,15 +61,13 @@ export const SignIn = () => {
           variant={ButtonVariant.Primary}
           scale={ButtonScale.ExtraLarge}
         >
-          Log in
+          Create account
         </Button>
-        <Button
-          type="submit"
-          variant={ButtonVariant.Secondary}
-          scale={ButtonScale.ExtraLarge}
-        >
-          Forgot password?
-        </Button>
+        <Styled.Message>
+          On submit the form, you accept the{' '}
+          <a href="#">Terms of the User Agreement</a> and{' '}
+          <a href="#">Privacy Policy</a>
+        </Styled.Message>
       </Styled.Footer>
     </Styled.Form>
   )

@@ -26,12 +26,18 @@ export const Subtitle = styled.p`
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
+
+  span {
+    padding: 4px 8px;
+    background-color: ${variables.gray7};
+    border-radius: 6px;
+  }
 `
 
 export const Content = styled.div`
-  margin: 32px 0;
+  margin: 22px 0;
   display: inline-grid;
-  grid-row-gap: 16px;
+  grid-row-gap: 8px;
 `
 
 export const Row = styled.div`
