@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { variables } from 'styles'
+import { media, variables } from 'styles'
 
 export const Form = styled.form`
   display: inline-grid;
@@ -10,6 +10,10 @@ export const Form = styled.form`
   border-radius: 24px;
   border: 1px solid ${variables.gray6};
   background-color: ${variables.gray8};
+
+  @media (${media.Table}) {
+    padding: 48px 32px;
+  }
 `
 
 export const Title = styled.h1`

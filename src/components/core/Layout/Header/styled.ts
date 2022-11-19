@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { Container } from 'components/common/Container/styled'
 import { HeaderProps, HeaderVariant } from './types'
+import { media } from 'styles'
 
 export const Header = styled.header<Pick<HeaderProps, 'variant'>>`
   box-sizing: border-box;
@@ -21,5 +22,10 @@ export const Header = styled.header<Pick<HeaderProps, 'variant'>>`
   ${Container} {
     display: flex;
     align-items: center;
+  }
+
+  @media (${media.Table}) {
+    padding-left: 0;
+    padding-right: 0;
   }
 `

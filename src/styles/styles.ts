@@ -1,6 +1,6 @@
 import 'reset-css/reset.css'
+import variables from './variables'
 import { createGlobalStyle } from 'styled-components'
-import { variables } from './variables'
 
 export const styles = createGlobalStyle`
   a {
