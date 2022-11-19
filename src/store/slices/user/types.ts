@@ -6,5 +6,6 @@ export interface UserState {
   emailVerifyAt: Date | null
   firstName: string
   lastName: string
+  position: string
   avatar: string | null
 }
