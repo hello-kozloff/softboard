@@ -30,6 +30,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/redux-persist": "^4.3.1",
     "@types/styled-components": "^5.1.26",
+    "@types/yup": "^0.32.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "eslint": "8.22.0",
