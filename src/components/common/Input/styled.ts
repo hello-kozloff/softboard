@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 `
 
 export const Input = styled.input`
+  width: 100%;
   box-sizing: border-box;
   padding: 12px 16px;
 
