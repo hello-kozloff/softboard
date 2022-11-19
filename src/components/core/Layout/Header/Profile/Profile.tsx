@@ -11,7 +11,7 @@ export const Profile = () => {
 
   return (
     <Dropdown config={dropdownConfig} onChange={setOpen}>
-      <Styled.Profile>
+      <Styled.Profile type="button">
         <Styled.Username>{`${user.firstName} ${user.lastName[0]}.`}</Styled.Username>
         <Styled.Avatar src={user.avatar || '/img/not-found-avatar.jpeg'} />
         <Styled.Chevron animate={{ rotate: isOpen ? -180 : 0 }}>
