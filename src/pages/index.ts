@@ -1,5 +1,5 @@
 export { SignIn, SignUp, Logout } from './Auth'
-export { default as Boards } from './Boards'
+export { default as Boards, Board } from './Boards'
 export { default as Dashboard } from './Dashboard'
 export { default as Profile } from './Profile'
 export { default as Projects } from './Projects'

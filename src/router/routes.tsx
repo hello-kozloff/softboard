@@ -46,6 +46,15 @@ export const routes: CustomRoute[] = [
     },
   },
   {
+    path: RoutePath.BOARD,
+    page: pages.Board,
+    extra: {
+      guard: {
+        auth: true,
+      },
+    },
+  },
+  {
     path: RoutePath.DASHBOARD,
     page: pages.Dashboard,
     extra: {
