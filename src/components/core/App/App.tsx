@@ -12,7 +12,7 @@ export const App = () => {
   return (
     <React.Fragment>
       <Styles />
-      <ToastContainer position="top-center" />
+      <ToastContainer theme="dark" position="top-center" />
       <StoreProvider store={Store}>
         <PersistGate loading={null} persistor={persistStore(Store)}>
           <RouterProvider router={Router} />
