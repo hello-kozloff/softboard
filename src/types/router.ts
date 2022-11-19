@@ -14,6 +14,10 @@ export enum RoutePath {
 }
 
 export interface ExtraRouteProps {
+  layout?: {
+    header?: JSX.Element
+    footer?: JSX.Element
+  }
   guard?: {
     auth?: boolean
   }

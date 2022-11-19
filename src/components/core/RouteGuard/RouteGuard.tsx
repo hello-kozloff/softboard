@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import { RoutePath } from 'types/router'
 import { RouteGuardProps } from './types'
 import useLogged from 'hooks/useLogged'
 
-export const RouteGuard = ({ children, guard }: RouteGuardProps) => {
+export const RouteGuard = ({ guard }: RouteGuardProps) => {
   const isLogged = useLogged()
 
   if (guard?.auth === true) {
@@ -19,5 +19,5 @@ export const RouteGuard = ({ children, guard }: RouteGuardProps) => {
     }
   }
 
-  return <>{children}</>
+  return <Outlet />
 }

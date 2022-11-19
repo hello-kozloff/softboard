@@ -1,4 +1,5 @@
 import * as pages from 'pages'
+import Layout, { HeaderVariant } from 'components/core/Layout'
 import { CustomRoute, RoutePath } from 'types/router'
 
 export const routes: CustomRoute[] = [
@@ -6,6 +7,9 @@ export const routes: CustomRoute[] = [
     path: RoutePath.AUTH_SIGN_IN,
     page: pages.SignIn,
     extra: {
+      layout: {
+        header: <Layout.Header variant={HeaderVariant.Transparent} />,
+      },
       guard: {
         auth: false,
       },
@@ -15,6 +19,9 @@ export const routes: CustomRoute[] = [
     path: RoutePath.AUTH_SIGN_UP,
     page: pages.SignUp,
     extra: {
+      layout: {
+        header: <Layout.Header variant={HeaderVariant.Transparent} />,
+      },
       guard: {
         auth: false,
       },

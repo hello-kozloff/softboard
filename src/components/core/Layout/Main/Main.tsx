@@ -1,13 +1,14 @@
 import * as React from 'react'
 import * as Styled from './styled'
-import { useLayoutContext } from '../LayoutContext'
 import Container from 'components/common/Container'
+import { Outlet } from 'react-router-dom'
 
 export const Main = () => {
-  const { children } = useLayoutContext()
   return (
     <Styled.Main role="main">
-      <Container>{children}</Container>
+      <Container>
+        <Outlet />
+      </Container>
     </Styled.Main>
   )
 }
