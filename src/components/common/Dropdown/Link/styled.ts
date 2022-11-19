@@ -14,5 +14,6 @@ export const Link = styled(NavLink)`
   &:hover {
     color: ${variables.white};
     background-color: ${variables.blue5};
+    text-decoration: none;
   }
 `

@@ -17,6 +17,7 @@ export const Link = styled(NavLink)<Record<string, unknown>>`
 
   &:hover {
     background-color: ${(props) => (!props.active ? variables.gray7 : null)};
+    text-decoration: none;
   }
 
   &:active {
