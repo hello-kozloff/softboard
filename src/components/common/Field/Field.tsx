@@ -4,10 +4,10 @@ import type { FieldProps } from './types'
 
 export const Field = ({ label, children, error }: FieldProps) => {
   return (
-    <Styled.Field>
+    <Styled.Field error={error}>
       {label && <Styled.Label>{label}</Styled.Label>}
       {children}
-      {error && <Styled.Error>{error}</Styled.Error>}
+      {error && <Styled.Error>{String(error)}</Styled.Error>}
     </Styled.Field>
   )
 }
