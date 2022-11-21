@@ -9,7 +9,7 @@ export enum RoutePath {
   SETTINGS = '/settings',
   TASKS = '/tasks',
   BOARDS = '/boards',
-  BOARD = '/board/:id',
+  BOARD_VIEW = '/boards/:id/view',
   TEAMS = '/teams',
   NOT_FOUND = '*',
 }

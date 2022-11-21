@@ -46,7 +46,7 @@ export const routes: CustomRoute[] = [
     },
   },
   {
-    path: RoutePath.BOARD,
+    path: RoutePath.BOARD_VIEW,
     page: pages.Board,
     extra: {
       guard: {
