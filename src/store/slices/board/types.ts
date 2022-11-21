@@ -4,12 +4,12 @@ import { TaskState } from 'store/slices/task'
 export interface ColumnState {
   id: ID
   name: string
-  tasks: TaskState[]
+  tasks: TaskState['id'][]
 }
 
 export interface BoardState {
   id: ID
-  title: string
+  name: string
   subtitle?: string
-  columns: ColumnState[]
+  columns: ColumnState['id'][]
 }
