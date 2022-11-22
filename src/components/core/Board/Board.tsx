@@ -3,6 +3,7 @@ import * as Styled from './styled'
 import type { BoardProps } from './types'
 import { BoardState } from 'store/slices/board/types'
 import getBoardById from 'supabase/actions/getBoardById'
+import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 import Column from './Column'
 
 export const Board = ({ id }: BoardProps) => {
@@ -16,12 +17,18 @@ export const Board = ({ id }: BoardProps) => {
     return <span>Loading board...</span>
   }
 
+  const onDragEnd = (result: DropResult) => {
+    console.log(result)
+  }
+
   return (
     <Styled.Board>
       <Styled.Name>{board.name}</Styled.Name>
-      {board.columns.map((columnId) => (
-        <Column key={columnId} id={columnId} />
-      ))}
+      <DragDropContext onDragEnd={onDragEnd}>
+        {board.columns.map((columnId) => (
+          <Column key={columnId} id={columnId} />
+        ))}
+      </DragDropContext>
     </Styled.Board>
   )
 }

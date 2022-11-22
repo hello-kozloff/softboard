@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as Styled from './styled'
 import type { ColumnProps } from './types'
+import { Draggable, Droppable } from 'react-beautiful-dnd'
 import getColumnById from 'supabase/actions/getColumnById'
 import { ColumnState } from 'store/slices/board/types'
 import Card from '../Card'
@@ -19,9 +20,29 @@ export const Column = ({ id }: ColumnProps) => {
   return (
     <Styled.Column>
       <Styled.Name>{column.name}</Styled.Name>
-      {column.tasks.map((taskId) => (
-        <Card key={taskId} id={taskId} />
-      ))}
+      <Droppable droppableId={`column-${id}`} type="column">
+        {(provided) => (
+          <Styled.Droppable
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {column.tasks.map((taskId, index) => (
+              <Draggable key={taskId} draggableId={taskId} index={index}>
+                {(provided) => (
+                  <Styled.Draggable
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <Card id={taskId} />
+                  </Styled.Draggable>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </Styled.Droppable>
+        )}
+      </Droppable>
     </Styled.Column>
   )
 }

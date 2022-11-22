@@ -9,3 +9,7 @@ export const Name = styled.h1`
   font-weight: bold;
   padding: 12px 24px;
 `
+
+export const Droppable = styled.div``
+
+export const Draggable = styled.div``
