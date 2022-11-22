@@ -3,7 +3,12 @@ import * as Styled from './styled'
 import type { BoardProps } from './types'
 import { BoardState } from 'store/slices/board/types'
 import getBoardById from 'supabase/actions/getBoardById'
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  DropResult,
+} from 'react-beautiful-dnd'
 import Column from './Column'
 
 export const Board = ({ id }: BoardProps) => {
@@ -25,9 +30,29 @@ export const Board = ({ id }: BoardProps) => {
     <Styled.Board>
       <Styled.Name>{board.name}</Styled.Name>
       <DragDropContext onDragEnd={onDragEnd}>
-        {board.columns.map((columnId) => (
-          <Column key={columnId} id={columnId} />
-        ))}
+        <Droppable droppableId={id} type="board">
+          {(provided) => (
+            <Styled.Droppable
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {board.columns.map((columnId, index) => (
+                <Draggable key={columnId} draggableId={columnId} index={index}>
+                  {(provided) => (
+                    <Styled.Draggable
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <Column id={columnId} />
+                    </Styled.Draggable>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </Styled.Droppable>
+          )}
+        </Droppable>
       </DragDropContext>
     </Styled.Board>
   )

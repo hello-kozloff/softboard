@@ -20,7 +20,7 @@ export const Column = ({ id }: ColumnProps) => {
   return (
     <Styled.Column>
       <Styled.Name>{column.name}</Styled.Name>
-      <Droppable droppableId={`column-${id}`} type="column">
+      <Droppable droppableId={id} type="column">
         {(provided) => (
           <Styled.Droppable
             ref={provided.innerRef}

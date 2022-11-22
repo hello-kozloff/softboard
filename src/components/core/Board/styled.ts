@@ -9,3 +9,11 @@ export const Board = styled.div`
 export const Name = styled.h1`
   font-weight: bold;
 `
+
+export const Droppable = styled.div`
+
+`
+
+export const Draggable = styled.div`
+
+`
