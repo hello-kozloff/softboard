@@ -6,7 +6,7 @@ import getColumnById from 'supabase/actions/getColumnById'
 import { ColumnState } from 'store/slices/board/types'
 import Card from '../Card'
 
-export const Column = ({ id }: ColumnProps) => {
+export const Column = ({ id, ...provided }: ColumnProps) => {
   const [column, setColumn] = React.useState<ColumnState | null>(null)
 
   React.useEffect(() => {
@@ -18,8 +18,10 @@ export const Column = ({ id }: ColumnProps) => {
   }
 
   return (
-    <Styled.Column>
-      <Styled.Name>{column.name}</Styled.Name>
+    <Styled.Column ref={provided.innerRef} {...provided.draggableProps}>
+      <Styled.Header>
+        <Styled.Name {...provided.dragHandleProps}>{column.name}</Styled.Name>
+      </Styled.Header>
       <Droppable droppableId={id} type="column">
         {(provided) => (
           <Styled.Droppable

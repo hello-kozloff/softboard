@@ -28,9 +28,8 @@ export const Board = ({ id }: BoardProps) => {
 
   return (
     <Styled.Board>
-      <Styled.Name>{board.name}</Styled.Name>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId={id} type="board">
+        <Droppable droppableId={id} direction="horizontal" type="board">
           {(provided) => (
             <Styled.Droppable
               ref={provided.innerRef}
@@ -38,15 +37,7 @@ export const Board = ({ id }: BoardProps) => {
             >
               {board.columns.map((columnId, index) => (
                 <Draggable key={columnId} draggableId={columnId} index={index}>
-                  {(provided) => (
-                    <Styled.Draggable
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      <Column id={columnId} />
-                    </Styled.Draggable>
-                  )}
+                  {(provided) => <Column id={columnId} {...provided} />}
                 </Draggable>
               ))}
               {provided.placeholder}
