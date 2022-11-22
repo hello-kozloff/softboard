@@ -3,8 +3,9 @@ import * as Styled from './styled'
 import type { CardProps } from './types'
 import { TaskState } from 'store/slices/task'
 import getTaskById from 'supabase/actions/getTaskById'
+import Tags from './Tags'
 
-export const Card = ({ id }: CardProps) => {
+export const Card = ({ id, ...snapshot }: CardProps) => {
   const [task, setTask] = React.useState<TaskState | null>(null)
 
   React.useEffect(() => {
@@ -16,8 +17,9 @@ export const Card = ({ id }: CardProps) => {
   }
 
   return (
-    <Styled.Card>
+    <Styled.Card {...snapshot}>
       <Styled.Name>{task.name}</Styled.Name>
+      <Tags />
     </Styled.Card>
   )
 }

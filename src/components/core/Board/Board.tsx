@@ -3,6 +3,7 @@ import * as Styled from './styled'
 import type { BoardProps } from './types'
 import { BoardState } from 'store/slices/board/types'
 import getBoardById from 'supabase/actions/getBoardById'
+import BoardContext from './BoardContext'
 import {
   DragDropContext,
   Draggable,
@@ -27,24 +28,36 @@ export const Board = ({ id }: BoardProps) => {
   }
 
   return (
-    <Styled.Board>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId={id} direction="horizontal" type="board">
-          {(provided) => (
-            <Styled.Droppable
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              {board.columns.map((columnId, index) => (
-                <Draggable key={columnId} draggableId={columnId} index={index}>
-                  {(provided) => <Column id={columnId} {...provided} />}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </Styled.Droppable>
-          )}
-        </Droppable>
-      </DragDropContext>
-    </Styled.Board>
+    <BoardContext.Provider value={board}>
+      <Styled.Board>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId={id} direction="horizontal" type="board">
+            {(provided) => (
+              <Styled.Droppable
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {board.columns.map((columnId, index) => (
+                  <Draggable
+                    key={columnId}
+                    draggableId={columnId}
+                    index={index}
+                  >
+                    {(provided, snapshot) => (
+                      <Column
+                        id={columnId}
+                        provided={provided}
+                        snapshot={snapshot}
+                      />
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </Styled.Droppable>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </Styled.Board>
+    </BoardContext.Provider>
   )
 }
