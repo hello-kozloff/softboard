@@ -14,7 +14,7 @@ export const Task = observer(({ id, snapshot }: TaskProps) => {
   }
 
   return (
-    <Styled.Card {...snapshot}>
+    <Styled.Card snapshot={snapshot}>
       <Styled.Name>{task.name}</Styled.Name>
       {!!task.tags.length && <Tags />}
     </Styled.Card>

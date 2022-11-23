@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { variables } from 'styles'
-import { DraggableStateSnapshot } from 'react-beautiful-dnd'
+import { ColumnProps } from './types'
 
 export const Column = styled.div`
   width: 100%;
@@ -17,6 +17,7 @@ export const Name = styled.span`
   border-radius: 8px;
   background-color: ${variables.gray8};
   box-sizing: border-box;
+  user-select: none;
   padding: 10px;
 
   font-size: 16px;
@@ -24,7 +25,7 @@ export const Name = styled.span`
   line-height: 16px;
 `
 
-export const Droppable = styled.div<DraggableStateSnapshot>`
+export const Droppable = styled.div<Pick<ColumnProps, 'snapshot'>>`
   padding: 4px 8px;
   border-radius: 8px;
   box-sizing: border-box;
@@ -35,7 +36,8 @@ export const Droppable = styled.div<DraggableStateSnapshot>`
   border: 1px solid transparent;
 
   ${(props) =>
-    props.isDragging &&
+    !props.snapshot.isDropAnimating &&
+    props.snapshot.isDragging &&
     css`
       border-color: ${variables.gray9};
       box-shadow: 0 4px 16px ${variables.gray9};

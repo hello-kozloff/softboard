@@ -24,7 +24,7 @@ export const Column = observer(({ id, provided, snapshot }: ColumnProps) => {
           <Styled.Droppable
             ref={provided.innerRef}
             {...provided.droppableProps}
-            {...snapshot}
+            snapshot={snapshot}
           >
             {column.tasks.map((taskId, index) => (
               <Draggable key={taskId} draggableId={taskId} index={index}>
@@ -35,6 +35,7 @@ export const Column = observer(({ id, provided, snapshot }: ColumnProps) => {
                     {...provided.dragHandleProps}
                   >
                     <Task id={taskId} snapshot={snapshot} />
+                    {snapshot.isDropAnimating}
                   </Styled.Draggable>
                 )}
               </Draggable>

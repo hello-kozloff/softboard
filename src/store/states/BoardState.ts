@@ -106,18 +106,12 @@ export class BoardState {
       const column = this.columns[columnIndex]
       if (!column) return
 
-      const tasks = Array.from(column.tasks)
-      const [removed] = tasks.splice(indexFrom, 1)
-      tasks.splice(indexTo, 0, removed)
-
-      this.columns[columnIndex].tasks = tasks
+      const [removed] = column.tasks.splice(indexFrom, 1)
+      removed && column.tasks.splice(indexTo, 0, removed)
     }
 
     // * Outside column task movement
-    this.columns[fromIndex].tasks = [
-      ...this.columns[fromIndex].tasks.filter((task) => task !== taskId),
-    ]
-
-    this.columns[toIndex].tasks.splice(indexTo, 0, taskId)
+    const [removed] = this.columns[fromIndex].tasks.splice(indexFrom, 1)
+    removed && this.columns[toIndex].tasks.splice(indexTo, 0, removed)
   }
 }

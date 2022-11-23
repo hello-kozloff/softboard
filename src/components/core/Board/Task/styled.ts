@@ -1,15 +1,14 @@
 import styled, { css } from 'styled-components'
 import { variables } from 'styles'
-import { DraggableStateSnapshot } from 'react-beautiful-dnd'
+import { ColumnProps } from '../Column'
 
-export const Card = styled.div<DraggableStateSnapshot>`
+export const Card = styled.div<Pick<ColumnProps, 'snapshot'>>`
   display: grid;
   padding: 16px;
 
   border-radius: 6px;
   border-bottom: 1px solid ${variables.gray9};
   background-color: ${variables.gray6};
-  transition: 0.25s ease-out;
   user-select: none;
 
   &:hover {
@@ -17,7 +16,8 @@ export const Card = styled.div<DraggableStateSnapshot>`
   }
 
   ${(props) =>
-    props.isDragging &&
+    !props.snapshot.isDropAnimating &&
+    props.snapshot.isDragging &&
     css`
       background-color: ${variables.gray5};
       box-shadow: 0 4px 16px ${variables.gray9};
