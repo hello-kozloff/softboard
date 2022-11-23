@@ -1,4 +1,9 @@
+import * as Stores from 'supabase/stores'
 import { ID } from './utils'
+
+export interface RootState {
+  board: Stores.BoardStore
+}
 
 export interface UserState {
   id: ID
