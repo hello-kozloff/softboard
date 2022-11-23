@@ -1,8 +1,9 @@
 import * as React from 'react'
 import * as Styled from './styled'
 import type { BoardProps } from './types'
-import { BoardObject } from 'types/store'
 import BoardContext from './BoardContext'
+import { observer } from 'mobx-react'
+import { useStore } from 'store'
 import {
   DragDropContext,
   Draggable,
@@ -11,10 +12,14 @@ import {
 } from 'react-beautiful-dnd'
 import Column from './Column'
 
-export const Board = ({ id }: BoardProps) => {
-  const [board, setBoard] = React.useState<BoardObject | null>(null)
+export const Board = observer(({ id }: BoardProps) => {
+  const { board: BoardState } = useStore()
 
-  if (board === null) {
+  React.useEffect(() => {
+    BoardState.fetch(id).then(() => BoardState.getColumns())
+  }, [id])
+
+  if (BoardState.loading) {
     return <span>Loading board...</span>
   }
 
@@ -23,7 +28,7 @@ export const Board = ({ id }: BoardProps) => {
   }
 
   return (
-    <BoardContext.Provider value={board}>
+    <BoardContext.Provider value={BoardState.board}>
       <Styled.Board>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId={id} direction="horizontal" type="board">
@@ -32,7 +37,7 @@ export const Board = ({ id }: BoardProps) => {
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >
-                {board.columns.map((columnId, index) => (
+                {BoardState.board?.columns.map((columnId, index) => (
                   <Draggable
                     key={columnId}
                     draggableId={columnId}
@@ -41,6 +46,7 @@ export const Board = ({ id }: BoardProps) => {
                     {(provided, snapshot) => (
                       <Column
                         id={columnId}
+                        index={index}
                         provided={provided}
                         snapshot={snapshot}
                       />
@@ -55,4 +61,4 @@ export const Board = ({ id }: BoardProps) => {
       </Styled.Board>
     </BoardContext.Provider>
   )
-}
+})
