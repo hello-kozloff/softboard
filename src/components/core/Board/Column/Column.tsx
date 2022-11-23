@@ -35,7 +35,6 @@ export const Column = observer(({ id, provided, snapshot }: ColumnProps) => {
                     {...provided.dragHandleProps}
                   >
                     <Task id={taskId} snapshot={snapshot} />
-                    {snapshot.isDropAnimating}
                   </Styled.Draggable>
                 )}
               </Draggable>
