@@ -1,18 +1,7 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import UserReducer from './slices/user'
+import * as States from './states'
+import { RootState } from './types'
 
-const persistConfig = {
-  key: 'root',
-  storage,
+export const Store: RootState = {
+  user: new States.UserState(),
+  board: new States.BoardState(),
 }
-
-export const store = configureStore({
-  reducer: persistReducer(
-    persistConfig,
-    combineReducers({
-      user: UserReducer,
-    }),
-  ),
-})

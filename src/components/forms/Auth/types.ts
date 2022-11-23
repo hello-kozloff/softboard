@@ -1,5 +1,6 @@
-import { UserState } from 'store/slices/user'
+import { UserObject } from 'types/store'
 
 export type UserValues = {
   password: string
-} & Pick<UserState, 'email' | 'firstName' | 'lastName' | 'position'>
+} & Pick<UserObject, 'email' | 'firstName' | 'lastName' | 'position'>
+

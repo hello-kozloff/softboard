@@ -1,4 +1,6 @@
-import { store } from './store'
+import * as States from './states'
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export interface RootState {
+  user: States.UserState
+  board: States.BoardState
+}

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { TagState } from 'store/slices/tag'
+import { TagObject } from 'types/store'
 import { variables } from 'styles'
 
-export const Tag = styled.span<Pick<TagState, 'color'>>`
+export const Tag = styled.span<Pick<TagObject, 'color'>>`
   display: inline-grid;
   box-sizing: border-box;
   margin-right: 8px;

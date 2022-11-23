@@ -1,68 +1,64 @@
-import * as Stores from 'supabase/stores'
 import { ID } from './utils'
 
-export interface RootState {
-  board: Stores.BoardStore
-}
-
-export interface UserState {
+export interface UserObject {
   id: ID
   email: string
+  emailVerifyAt: Date | null
   firstName: string
   lastName: string
   position: string
   avatar: string | null
 }
 
-export interface ProjectState {
+export interface ProjectObject {
   id: ID
   title: string
   subtitle: string | null
-  author: UserState['id']
+  author: UserObject['id']
   created: Date
   updated: Date
-  participants: UserState['id'][]
-  boards: BoardState['id'][]
+  participants: UserObject['id'][]
+  boards: BoardObject['id'][]
 }
 
-export interface BoardState {
+export interface BoardObject {
   id: ID
   name: string
-  author: UserState['id']
+  author: UserObject['id']
   created: Date
   updated: Date
-  participants: UserState['id'][]
-  project: ProjectState['id']
-  columns: ColumnState['id'][]
+  participants: UserObject['id'][]
+  project: ProjectObject['id']
+  columns: ColumnObject['id'][]
 }
 
-export interface ColumnState {
+export interface ColumnObject {
   id: ID
   name: string
-  author: UserState['id']
+  author: UserObject['id']
   created: Date
   updated: Date
-  board: BoardState['id']
-  tasks: TaskState['id'][]
+  board: BoardObject['id']
+  tasks: TaskObject['id'][]
 }
 
-export interface TaskState {
+export interface TaskObject {
   id: ID
   name: string
   content: JSON | null
-  author: UserState['id']
+  author: UserObject['id']
   created: Date
   updated: Date
-  participants: UserState['id'][]
-  project: ProjectState['id']
-  column: ColumnState['id']
-  tags: TagState['id'][]
+  participants: UserObject['id'][]
+  project: ProjectObject['id']
+  column: ColumnObject['id']
+  tags: TagObject['id'][]
 }
 
-export interface TagState {
+export interface TagObject {
   id: ID
   text: string
   color: string
   background: string
-  project: ProjectState['id']
+  project: ProjectObject['id']
 }

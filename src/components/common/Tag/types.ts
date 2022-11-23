@@ -1,3 +1,3 @@
-import { TagState } from 'store/slices/tag/types'
+import { TagObject } from 'types/store'
 
-export type TagProps = TagState
+export type TagProps = TagObject

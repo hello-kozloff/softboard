@@ -1,16 +1,19 @@
 import * as React from 'react'
-import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import Field from 'components/common/Field'
-import Input from 'components/common/Input'
+import { useNavigate } from 'react-router-dom'
 import { Styled } from 'components/forms/Auth'
 import { useSignUpContext } from 'components/forms/Auth/SignUp'
+import Field from 'components/common/Field'
+import Input from 'components/common/Input'
 import Button, { ButtonScale, ButtonVariant } from 'components/common/Button'
-import { UserAction, UserState } from 'store/slices/user'
+import useUser from 'hooks/useUser'
+import { UserObject } from 'types/store'
+import { RoutePath } from 'types/router'
 import { Values } from './types'
 
 export const Setup = () => {
-  const dispatch = useDispatch()
+  const UserState = useUser()
+  const navigate = useNavigate()
 
   const {
     userState: [user],
@@ -25,18 +28,16 @@ export const Setup = () => {
 
   const onSubmit = (values: Values) => {
     user &&
-      dispatch(
-        UserAction.store({
-          ...user,
-          id: '1',
-          email: user.email,
-          emailVerifyAt: new Date(),
-          firstName: values.firstName,
-          lastName: values.lastName,
-          position: values.position,
-          avatar: null,
-        } as UserState),
-      )
+      UserState.singIn({
+        ...user,
+        id: '1',
+        email: user.email,
+        emailVerifyAt: new Date(),
+        firstName: values.firstName,
+        lastName: values.lastName,
+        position: values.position,
+        avatar: null,
+      } as UserObject).then(() => navigate(RoutePath.HOME))
   }
 
   return (

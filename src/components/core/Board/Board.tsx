@@ -1,8 +1,7 @@
 import * as React from 'react'
 import * as Styled from './styled'
 import type { BoardProps } from './types'
-import { BoardState } from 'store/slices/board/types'
-import getBoardById from 'supabase/actions/getBoardById'
+import { BoardObject } from 'types/store'
 import BoardContext from './BoardContext'
 import {
   DragDropContext,
@@ -13,11 +12,7 @@ import {
 import Column from './Column'
 
 export const Board = ({ id }: BoardProps) => {
-  const [board, setBoard] = React.useState<BoardState | null>(null)
-
-  React.useEffect(() => {
-    getBoardById(id).then(({ data }) => data && setBoard(data))
-  }, [id])
+  const [board, setBoard] = React.useState<BoardObject | null>(null)
 
   if (board === null) {
     return <span>Loading board...</span>

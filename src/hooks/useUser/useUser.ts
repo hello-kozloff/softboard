@@ -1,8 +1,7 @@
-import { useSelector } from 'react-redux'
-import { RootState } from 'store'
+import { useStore } from 'store'
 
 export const useUser = () => {
-  const user = useSelector((state: RootState) => state.user)
+  const { user } = useStore()
 
   if (!user) {
     throw new Error('User must be logged in! Check your logic!')

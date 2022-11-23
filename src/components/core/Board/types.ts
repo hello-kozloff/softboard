@@ -1,5 +1,3 @@
-import { BoardState } from 'store/slices/board/types'
+import { BoardObject } from 'types/store'
 
-export type ContextPayload = BoardState
-
-export type BoardProps = Pick<BoardState, 'id'>
+export type BoardProps = Pick<BoardObject, 'id'>

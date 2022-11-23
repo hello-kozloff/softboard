@@ -1,19 +1,12 @@
 import * as React from 'react'
 import * as Styled from './styled'
 import Tag from 'components/common/Tag'
-import { TagState } from 'store/slices/tag'
-import getTaskTagsById from 'supabase/actions/getTaskTagsById'
+import { TagObject } from 'types/store'
 import { useBoardContext } from '../../BoardContext'
 
 export const Tags = () => {
   const { id } = useBoardContext()
-  const [tags, setTags] = React.useState<TagState[]>([])
-
-  console.log(tags)
-
-  React.useEffect(() => {
-    getTaskTagsById(id).then(({ data }) => data && setTags(data))
-  }, [id])
+  const [tags, setTags] = React.useState<TagObject[]>([])
 
   return (
     <Styled.Tags>

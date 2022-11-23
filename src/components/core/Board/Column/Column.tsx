@@ -2,16 +2,11 @@ import * as React from 'react'
 import * as Styled from './styled'
 import type { ColumnProps } from './types'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
-import getColumnById from 'supabase/actions/getColumnById'
-import { ColumnState } from 'store/slices/board/types'
+import { ColumnObject } from 'types/store'
 import Card from '../Card'
 
 export const Column = ({ id, provided, snapshot }: ColumnProps) => {
-  const [column, setColumn] = React.useState<ColumnState | null>(null)
-
-  React.useEffect(() => {
-    getColumnById(id).then(({ data }) => data && setColumn(data))
-  }, [id])
+  const [column, setColumn] = React.useState<ColumnObject | null>(null)
 
   if (column === null) {
     return <span>Loading column...</span>

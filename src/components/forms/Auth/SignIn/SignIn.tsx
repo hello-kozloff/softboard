@@ -1,18 +1,20 @@
 import * as React from 'react'
 import * as Styled from '../styled'
-import phrases from './phrases'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import Field from 'components/common/Field'
 import Input from 'components/common/Input'
 import Button, { ButtonScale, ButtonVariant } from 'components/common/Button'
-import { useForm } from 'react-hook-form'
-import { UserAction } from 'store/slices/user'
-import { useDispatch } from 'react-redux'
+import useUser from 'hooks/useUser'
+import phrases from './phrases'
 import { Values } from './types'
+import { RoutePath } from 'types/router'
 
 const phrase = phrases[Math.floor(Math.random() * phrases.length)]
 
 export const SignIn = () => {
-  const dispatch = useDispatch()
+  const UserState = useUser()
+  const navigate = useNavigate()
 
   const {
     register,
@@ -26,17 +28,15 @@ export const SignIn = () => {
   })
 
   const onSubmit = (values: Values) =>
-    dispatch(
-      UserAction.store({
-        id: '1',
-        email: values.email,
-        emailVerifyAt: null,
-        firstName: 'Stew',
-        lastName: 'Jobs',
-        position: 'Frontend Developer',
-        avatar: null,
-      }),
-    )
+    UserState.singIn({
+      id: '1',
+      email: values.email,
+      emailVerifyAt: null,
+      firstName: 'Stew',
+      lastName: 'Jobs',
+      position: 'Frontend Developer',
+      avatar: null,
+    }).then(() => navigate(RoutePath.HOME))
 
   return (
     <Styled.Form onSubmit={handleSubmit(onSubmit)}>

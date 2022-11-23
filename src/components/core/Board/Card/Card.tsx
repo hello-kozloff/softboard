@@ -1,16 +1,11 @@
 import * as React from 'react'
 import * as Styled from './styled'
 import type { CardProps } from './types'
-import { TaskState } from 'store/slices/task'
-import getTaskById from 'supabase/actions/getTaskById'
+import { TaskObject } from 'types/store'
 import Tags from './Tags'
 
 export const Card = ({ id, ...snapshot }: CardProps) => {
-  const [task, setTask] = React.useState<TaskState | null>(null)
-
-  React.useEffect(() => {
-    getTaskById(id).then(({ data }) => data && setTask(data))
-  }, [id])
+  const [task, setTask] = React.useState<TaskObject | null>(null)
 
   if (task === null) {
     return <span>Loading task...</span>

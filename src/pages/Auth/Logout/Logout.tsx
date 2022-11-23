@@ -1,14 +1,13 @@
 import * as React from 'react'
 import { Navigate } from 'react-router-dom'
 import { RoutePath } from 'types/router'
-import { useDispatch } from 'react-redux'
-import { UserAction } from 'store/slices/user'
+import useUser from 'hooks/useUser'
 
 export const Logout = () => {
-  const dispatch = useDispatch()
+  const UserState = useUser()
 
   React.useEffect(() => {
-    dispatch(UserAction.reset())
+    UserState.logout()
   }, [])
 
   return <Navigate to={RoutePath.HOME} />

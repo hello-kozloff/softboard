@@ -6,14 +6,14 @@ import { FiChevronDown } from 'react-icons/fi'
 import dropdownConfig from './dropdownConfig'
 
 export const Profile = () => {
-  const user = useUser()
+  const { user } = useUser()
   const [isOpen, setOpen] = React.useState<boolean>(false)
 
   return (
     <Dropdown config={dropdownConfig} onChange={setOpen}>
       <Styled.Profile type="button">
-        <Styled.Username>{`${user.firstName} ${user.lastName[0]}.`}</Styled.Username>
-        <Styled.Avatar src={user.avatar || '/img/not-found-avatar.jpeg'} />
+        <Styled.Username>{`${user?.firstName} ${user?.lastName[0]}.`}</Styled.Username>
+        <Styled.Avatar src={user?.avatar || '/img/not-found-avatar.jpeg'} />
         <Styled.Chevron animate={{ rotate: isOpen ? -180 : 0 }}>
           <FiChevronDown />
         </Styled.Chevron>

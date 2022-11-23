@@ -1,18 +1,18 @@
 import supabase from 'supabase/index'
 import { makeAutoObservable } from 'mobx'
-import { BoardState } from 'types/store'
+import { BoardObject } from 'types/store'
 import { PostgrestSingleResponse } from '@supabase/supabase-js'
 
-export class BoardStore {
-  public board: BoardState | null = null
+export class BoardState {
+  public board: BoardObject | null = null
 
   constructor() {
     makeAutoObservable(this)
   }
 
   public async getById(
-    id: BoardState['id'],
-  ): Promise<PostgrestSingleResponse<BoardState>> {
+    id: BoardObject['id'],
+  ): Promise<PostgrestSingleResponse<BoardObject>> {
     const response = await supabase
       .from('Boards')
       .select('*')

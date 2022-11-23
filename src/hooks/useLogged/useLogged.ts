@@ -1,7 +1,6 @@
-import { useSelector } from 'react-redux'
-import { RootState } from 'store'
+import { useStore } from 'store'
 
 export const useLogged = () => {
-  const user = useSelector((state: RootState) => state.user)
-  return user !== null
+  const { user: UserStore } = useStore()
+  return UserStore.user !== null
 }

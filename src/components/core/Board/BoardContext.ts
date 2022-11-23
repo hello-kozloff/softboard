@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { ContextPayload } from './types'
+import { BoardObject } from 'types/store'
 
-const BoardContext = React.createContext<ContextPayload | null>(null)
+const BoardContext = React.createContext<BoardObject | null>(null)
 
 export const useBoardContext = () => {
   const context = React.useContext(BoardContext)
