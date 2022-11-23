@@ -7,4 +7,4 @@ if (url === undefined || key === undefined) {
   throw new Error('It looks like you forgot to set .env')
 }
 
-export const supabase = createClient(url, key)
+export const Supabase = createClient(url, key)

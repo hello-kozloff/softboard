@@ -8,7 +8,7 @@ import {
   Route,
 } from 'react-router-dom'
 
-export const router = createBrowserRouter(
+export const Router = createBrowserRouter(
   createRoutesFromElements(
     <>
       {routes.map((route) => {

@@ -1,4 +1,4 @@
-import supabase from 'supabase/index'
+import supabase from 'supabase'
 import { makeAutoObservable } from 'mobx'
 import { BoardObject, ColumnObject, TaskObject } from 'types/store'
 import { PostgrestSingleResponse } from '@supabase/supabase-js'

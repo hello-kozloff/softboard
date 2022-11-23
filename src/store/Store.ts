@@ -5,3 +5,4 @@ export const Store: RootState = {
   user: new States.UserState(),
   board: new States.BoardState(),
 }
+

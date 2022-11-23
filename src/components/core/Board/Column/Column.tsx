@@ -10,7 +10,7 @@ export const Column = observer(({ index, provided, snapshot }: ColumnProps) => {
   const { board: BoardState } = useStore()
   const column = BoardState.columns[index]
 
-  if (!column && BoardState.loading) {
+  if (!column) {
     return <span>Loading column...</span>
   }
 
@@ -34,7 +34,7 @@ export const Column = observer(({ index, provided, snapshot }: ColumnProps) => {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                   >
-                    <Task index={index} snapshot={snapshot} />
+                    <Task id={taskId} snapshot={snapshot} />
                   </Styled.Draggable>
                 )}
               </Draggable>

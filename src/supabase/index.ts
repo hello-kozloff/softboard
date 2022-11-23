@@ -1,1 +1,1 @@
-export { supabase as default } from './supabase'
+export { Supabase as default } from './Supabase'

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { RootState } from './types'
-import { Store } from './store'
+import { Store } from './Store'
 
 const StoreContext = React.createContext<RootState | null>(null)
 
