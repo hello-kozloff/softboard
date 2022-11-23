@@ -6,9 +6,9 @@ import { observer } from 'mobx-react'
 import { useStore } from 'store'
 import Task from '../Task'
 
-export const Column = observer(({ index, provided, snapshot }: ColumnProps) => {
+export const Column = observer(({ id, provided, snapshot }: ColumnProps) => {
   const { board: BoardState } = useStore()
-  const column = BoardState.columns[index]
+  const column = BoardState.columns.find((column) => column.id === id)
 
   if (!column) {
     return <span>Loading column...</span>

@@ -13,7 +13,11 @@ export class BoardState {
     makeAutoObservable(this)
   }
 
-  public async fetch(
+  public init(id: BoardObject['id']) {
+    this.fetch(id).then(() => this.getColumns().then(() => this.getTasks()))
+  }
+
+  private async fetch(
     id: BoardObject['id'],
   ): Promise<PostgrestSingleResponse<BoardObject>> {
     this.loading = true
@@ -32,7 +36,7 @@ export class BoardState {
     return response
   }
 
-  public async getColumns() {
+  private async getColumns() {
     this.loading = true
 
     if (this.board === null) {
@@ -52,12 +56,9 @@ export class BoardState {
     return response
   }
 
-  public async getTasks() {
+  private async getTasks() {
+    if (this.board === null) return
     this.loading = true
-
-    if (this.board === null) {
-      throw new Error('Board not found!')
-    }
 
     const response = await supabase
       .from('Tasks')
@@ -70,5 +71,53 @@ export class BoardState {
     }
 
     return response
+  }
+
+  public reorderColumns(indexFrom: number, indexTo: number) {
+    if (this.board === null) return
+
+    const columns = Array.from(this.board.columns)
+    const [removed] = columns.splice(indexFrom, 1)
+    columns.splice(indexTo, 0, removed)
+
+    this.board = {
+      ...this.board,
+      columns,
+    }
+  }
+
+  public moveTask(
+    taskId: TaskObject['id'],
+    columnFrom: ColumnObject['id'],
+    columnTo: ColumnObject['id'],
+    indexFrom: number,
+    indexTo: number,
+  ) {
+    const from = this.columns.find((column) => column.id === columnFrom)
+    const to = this.columns.find((column) => column.id === columnTo)
+    if (!from || !to) return
+
+    const fromIndex = this.columns.indexOf(from)
+    const toIndex = this.columns.indexOf(to)
+
+    // * Inside column task movement
+    if (columnFrom === columnTo) {
+      const columnIndex = this.columns.indexOf(from)
+      const column = this.columns[columnIndex]
+      if (!column) return
+
+      const tasks = Array.from(column.tasks)
+      const [removed] = tasks.splice(indexFrom, 1)
+      tasks.splice(indexTo, 0, removed)
+
+      this.columns[columnIndex].tasks = tasks
+    }
+
+    // * Outside column task movement
+    this.columns[fromIndex].tasks = [
+      ...this.columns[fromIndex].tasks.filter((task) => task !== taskId),
+    ]
+
+    this.columns[toIndex].tasks.splice(indexTo, 0, taskId)
   }
 }

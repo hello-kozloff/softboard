@@ -10,6 +10,7 @@ export const Card = styled.div<DraggableStateSnapshot>`
   border-bottom: 1px solid ${variables.gray9};
   background-color: ${variables.gray6};
   transition: 0.25s ease-out;
+  user-select: none;
 
   &:hover {
     background-color: ${variables.gray5};
