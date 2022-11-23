@@ -16,10 +16,12 @@ export const Board = observer(({ id }: BoardProps) => {
   const { board: BoardState } = useStore()
 
   React.useEffect(() => {
-    BoardState.fetch(id).then(() => BoardState.getColumns())
+    BoardState.fetch(id).then(() =>
+      BoardState.getColumns().then(() => BoardState.getTasks()),
+    )
   }, [id])
 
-  if (BoardState.loading) {
+  if (!BoardState.board && BoardState.loading) {
     return <span>Loading board...</span>
   }
 
@@ -45,7 +47,6 @@ export const Board = observer(({ id }: BoardProps) => {
                   >
                     {(provided, snapshot) => (
                       <Column
-                        id={columnId}
                         index={index}
                         provided={provided}
                         snapshot={snapshot}
